@@ -1,3 +1,4 @@
 venv374
 .vscode
 Chinook_MySql_AutoIncrementPKs.sql
+*.sql
