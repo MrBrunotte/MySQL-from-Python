@@ -1,0 +1,53 @@
+#### CREATE A TABLE ####
+
+mysql> use chinook
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_chinook |
++-------------------+
+| album             |
+| artist            |
+| customer          |
+| employee          |
+| genre             |
+| invoice           |
+| invoiceline       |
+| mediatype         |
+| playlist          |
+| playlisttrack     |
+| track             |
++-------------------+
+11 rows in set (0.00 sec)
+
+####    
+Exit mysql here and create the table in the mysql_from_pyton.py file.
+When table Friends is created run the file and then to back to mysql_from_pyton.py
+In mysql do the following:
+####
+
+mysql> use chinook
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_chinook |
++-------------------+
+| album             |
+| artist            |
+| customer          |
+| employee          |
+| friends           |
+| genre             |
+| invoice           |
+| invoiceline       |
+| mediatype         |
+| playlist          |
+| playlisttrack     |
+| track             |
++-------------------+
+12 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Friends;
+Empty set (0.00 sec)
+
+#### TABLE END ####
