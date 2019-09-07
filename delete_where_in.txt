@@ -1,0 +1,120 @@
+#### DELETE WHERE IN ####
+
+What is it?         The SQL 'DELETE' command
+What does it do?    Deletes Data From A Table
+How do you use it?
+Specify the table that you want to delete from, and a where clause to identify the affected rows
+
+
+Let's write a simple SQL statement in our script to delete Jim and Bob.
+To delete multiple rows, a delete statement needs to be executed for each row that needs to be deleted.
+
+First delete Jim and Bob:
+    cursor.execute("DELETE FROM Friends WHERE name in ('jim', 'bob');")
+    connection.commit()
+
+## MYSQL ##
+
+Jim and Bob is gone!
+
+mysql> SELECT * FROM Friends;
++---------+------+---------------------+
+| name    | age  | DOB                 |
++---------+------+---------------------+
+| Rebecca |   25 | 1972-04-11 03:45:25 |
+| fred    |  100 | 1911-09-12 01:01:01 |
++---------+------+---------------------+
+2 rows in set (0.00 sec)
+
+Now we are going to insert many:
+
+rows = [("bob", 21, "1990-02-06 23:04:56"),
+        ("jim", 56, "1955-05-09 13:12:45"),
+        ("fred", 100, "1911-09-12 01:01:01")]
+    cursor.executemany("INSERT INTO Friends VALUES (%s,%s,%s);", rows)
+    connection.commit()
+
+## MYSQL ##
+
+mysql> SELECT * FROM Friends;
++---------+------+---------------------+
+| name    | age  | DOB                 |
++---------+------+---------------------+
+| Rebecca |   25 | 1972-04-11 03:45:25 |
+| fred    |  100 | 1911-09-12 01:01:01 |
+| bob     |   21 | 1990-02-06 23:04:56 |
+| jim     |   56 | 1955-05-09 13:12:45 |
+| fred    |  100 | 1911-09-12 01:01:01 |
++---------+------+---------------------+
+5 rows in set (0.00 sec)
+
+#### DELETE MULITPLE ROWS ####
+
+now we're going to write an example of how to delete multiple rows based on a list of names.
+
+1) We need to create an SQL statement from a Python list of names.
+
+    names = ['jim', 'bob']
+
+2) Delet from list
+
+    cursor.execute("DELETE FROM Friends WHERE name in (%s,%s);", names)
+
+## MYSQL ##
+
+mysql> SELECT * FROM Friends;
++---------+------+---------------------+
+| name    | age  | DOB                 |
++---------+------+---------------------+
+| Rebecca |   25 | 1972-04-11 03:45:25 |
+| fred    |  100 | 1911-09-12 01:01:01 |
+| fred    |  100 | 1911-09-12 01:01:01 |
++---------+------+---------------------+
+3 rows in set (0.00 sec)
+
+This statement runs twice, not the best way!
+
+So this is where the power of Python comes into place.
+So we're going to use a Python console to check this out.
+SQL has a way of deleting multiple rows.
+    If we write a where clause that matches multiple records, then we can delete them all at once.
+
+1) The first thing we need to do is work out how to turn a list of names into an SQL statement.
+
+2) Create the list of names in Python!
+    1) create the list:
+        >>> names = ['jim', 'bob']
+    2) find the length of the list  
+        >>> len(names)
+        2  
+    3) create the right number of %s symbols
+        >>> ['%s']*len(names)
+        ['%s', '%s']
+    4) Now we need to turn that into a string that's separated by     commas.
+        >>> ",".join(['%s']*len(names))
+        '%s,%s'
+And all we have to do now is drop that string into an SQL statement between a pair of parentheses.
+Type out what that SQL statement might look like.
+        "DELETE FROM Friends WHERE name in ({0})".format(",".join(['%s']*len(names))  
+Now that's all getting a bit unwieldy in the console.
+So let's try converting that into a Python script.
+
+So in the mysql_from_pyton.py file we do this:
+
+1) change name to list_of_names
+2) change the names to the last remaining thee names in the table
+    list_of_names = ['fred', 'fred', 'Rebecca']
+3) prepare the string with the same format as before: format(",".join(['%s']*len(names))
+    format_strings = ','.join(['%s']*len(list_of_names))
+4) Put that into the SQL command
+    cursor.execute("DELETE FROM Friends WHERE name in ({});".format(format_strings), list_of_names)
+
+Exit out of Python and run: 
+    python mysql_from_python.py agian
+
+## MYSQL ##
+
+mysql> SELECT * FROM Friends;
+Empty set (0.00 sec)
+
+we now have ampty table and the last three names were deleted!
