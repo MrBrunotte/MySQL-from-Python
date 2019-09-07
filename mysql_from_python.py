@@ -5,8 +5,10 @@ cursor = connection.cursor()
 
 
 try:
-    cursor.execute("UPDATE Friends SET age = %s WHERE name = %s;",
-    (23, 'Stefan'))
+    rows = [(23, 'Stefan'),
+            (25, 'Rebecca'),
+            (25, 'Fred')]
+    cursor.executemany("UPDATE Friends SET age = %s WHERE name = %s;", rows)
     connection.commit()
 
 finally:

@@ -1,0 +1,28 @@
+#### UPDATE MANY USING STRING INTERPOLATION ####
+
+What is it?         The SQL 'UPDATE' command
+What does it do?    Updates Data In A Table
+How do you use it?
+Specify the table and columns to update, the new values for each column, and a where clause to identify the affected rows
+
+To update many rows:
+
+We use the executemany() method in the cursor
+
+Add rows within [()]
+Add rows to the cursor
+
+## MYSQL ##
+
+mysql> SELECT * FROM Friends;
++---------+------+---------------------+
+| name    | age  | DOB                 |
++---------+------+---------------------+
+| Stefan  |   23 | 1972-02-17 01:15:45 |
+| Stefan  |   23 | 1972-02-17 01:15:45 |
+| Rebecca |   25 | 1972-04-11 03:45:25 |
+| Fred    |   25 | 2000-10-05 15:17:50 |
++---------+------+---------------------+
+4 rows in set (0.00 sec)
+
+Age has been changed
