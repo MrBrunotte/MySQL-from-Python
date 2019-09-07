@@ -1,0 +1,25 @@
+### EXECUTE MANY ###
+
+We use a similar approach to insert multiple rows
+
+We change row to rows
+we put in a list of TUPLES with [] sourrounding the values to make it a list.
+To iterate through the list we use the executemany() method of the curser, we also change row to rows in the cursor.
+
+## CHECK IN MYSQL ##
+
+mysql> SELECT * FROM Friends;
++---------+------+---------------------+
+| name    | age  | DOB                 |
++---------+------+---------------------+
+| Stefan  |   47 | 1972-02-17 01:15:45 |
+| Stefan  |   47 | 1972-02-17 01:15:45 |
+| Rebecca |   47 | 1972-04-11 03:45:25 |
+| Fred    |   19 | 2000-10-05 15:17:50 |
++---------+------+---------------------+
+4 rows in set (0.00 sec)
+
+##  notice that since i used the same values in my rows i got
+    two Stefan rows!
+    This is because I added Stefan twice on two separate occasions.
+##
