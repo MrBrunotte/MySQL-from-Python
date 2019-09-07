@@ -1,0 +1,21 @@
+### INSERT TO TABLE ####
+import the datetime package
+
+Store the values in a TULP called row
+Three values: Stefan, 47, date
+
+Let the cursor unpack the TULP and INSERT the three values
+into the INSERT statement
+%s, %s, %s represents the three items
+
+## CHECK IN MYSQL ##
+
+mysql> use chinook
+Database changed
+mysql> SELECT * FROM Friends;
++--------+------+---------------------+
+| name   | age  | DOB                 |
++--------+------+---------------------+
+| Stefan |   47 | 1972-02-17 01:15:45 |
++--------+------+---------------------+
+1 row in set (0.00 sec)
