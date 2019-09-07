@@ -1,0 +1,22 @@
+#### DELETE MANY ####
+
+What is it?         The SQL 'DELETE' command
+What does it do?    Deletes Data From A Table
+How do you use it?
+Specify the table that you want to delete from, and a where clause to identify the affected rows
+
+To delete many we use the executemany() method
+
+    rows = cursor.executemany("DELETE FROM Friends WHERE name = %s;", ['Fred', 'Stefan'])
+
+## MYSQL ##
+
+mysql> SELECT * FROM Friends;
++---------+------+---------------------+
+| name    | age  | DOB                 |
++---------+------+---------------------+
+| Rebecca |   25 | 1972-04-11 03:45:25 |
++---------+------+---------------------+
+1 row in set (0.00 sec)
+
+Fred and Stefan is gone from the table!
