@@ -1,0 +1,29 @@
+#### UPDATE ####
+
+What is it?         The SQL 'UPDATE' command
+What does it do?    Updates Data In A Table
+How do you use it?
+Specify the table and columns to update, the new values for each column, and a where clause to identify the affected rows
+
+We use the SQL UPDATE using the cursor
+
+Remove the rows
+Change back to the execute() method
+Update the friends tabel and set age to 22 where the name is Stefan
+
+Run the mysql_from_python.py file
+
+## MYSQL ##
+
+mysql> SELECT * FROM Friends;
++---------+------+---------------------+
+| name    | age  | DOB                 |
++---------+------+---------------------+
+| Stefan  |   22 | 1972-02-17 01:15:45 |
+| Stefan  |   22 | 1972-02-17 01:15:45 |
+| Rebecca |   47 | 1972-04-11 03:45:25 |
+| Fred    |   19 | 2000-10-05 15:17:50 |
++---------+------+---------------------+
+4 rows in set (0.00 sec)
+
+Age is changed from 47 to 22
