@@ -1,0 +1,42 @@
+#### ALTERNATE DELETE ####
+
+What is it?         The SQL 'DELETE' command
+What does it do?    Deletes Data From A Table
+How do you use it?
+Specify the table that you want to delete from, and a where clause to identify the affected rows
+
+Insert Stefan agin into the table:
+    row = ("Stefan", 47, "1972-02-17 01:15:45")
+    cursor.execute("INSERT INTO Friends VALUES (%s, %s, %s);",row)
+
+## MYSQL ##
+
+mysql> SELECT * FROM Friends;
++---------+------+---------------------+
+| name    | age  | DOB                 |
++---------+------+---------------------+
+| Rebecca |   25 | 1972-04-11 03:45:25 |
+| Fred    |   25 | 2000-10-05 15:17:50 |
+| Stefan  |   47 | 1972-02-17 01:15:45 |
++---------+------+---------------------+
+3 rows in set (0.00 sec)
+
+The alternate delete is using string interpolation.
+
+    rows = cursor.execute("DELETE FROM Friends WHERE name = %s;", 'Fred')
+    connection.commit()
+
+Note because we're only providing one piece of data, in this case, the name, we don't need a TUPLE, so a simple string  ('Fred') will suffice.
+
+## MYSQL ##
+
+mysql> SELECT * FROM Friends;
++---------+------+---------------------+
+| name    | age  | DOB                 |
++---------+------+---------------------+
+| Rebecca |   25 | 1972-04-11 03:45:25 |
+| Stefan  |   47 | 1972-02-17 01:15:45 |
++---------+------+---------------------+
+2 rows in set (0.00 sec)
+
+Fred is gone!

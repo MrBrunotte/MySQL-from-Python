@@ -5,7 +5,7 @@ cursor = connection.cursor()
 
 
 try:
-    cursor.execute("DELETE FROM Friends WHERE name = 'Stefan';")
+    rows = cursor.execute("DELETE FROM Friends WHERE name = %s;", 'Fred')
     connection.commit()
 
 finally:
