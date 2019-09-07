@@ -1,0 +1,26 @@
+#### DELETE ####
+
+What is it?         The SQL 'DELETE' command
+What does it do?    Deletes Data From A Table
+How do you use it?
+Specify the table that you want to delete from, and a where clause to identify the affected rows
+
+How do we delete a row?
+
+So to delete a single row in the table, we just simply execute a standard SQL delete using the cursor.
+
+Use the execute() method
+Use the DELETE FROM keywords
+
+## MYSQL ##
+
+mysql> SELECT * FROM Friends;
++---------+------+---------------------+
+| name    | age  | DOB                 |
++---------+------+---------------------+
+| Rebecca |   25 | 1972-04-11 03:45:25 |
+| Fred    |   25 | 2000-10-05 15:17:50 |
++---------+------+---------------------+
+2 rows in set (0.00 sec)
+
+The two rows with Stefan is deleted!

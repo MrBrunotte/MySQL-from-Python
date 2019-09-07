@@ -5,10 +5,7 @@ cursor = connection.cursor()
 
 
 try:
-    rows = [(23, 'Stefan'),
-            (25, 'Rebecca'),
-            (25, 'Fred')]
-    cursor.executemany("UPDATE Friends SET age = %s WHERE name = %s;", rows)
+    cursor.execute("DELETE FROM Friends WHERE name = 'Stefan';")
     connection.commit()
 
 finally:
